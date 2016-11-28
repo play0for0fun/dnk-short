@@ -1,51 +1,88 @@
-.arcticmodal-container,.arcticmodal-overlay{position:fixed;left:0;top:0;right:0;bottom:0;z-index:1000}
-.arcticmodal-container{overflow:auto;margin:0;padding:0;border:0;border-collapse:collapse;}
-:first-child+html .arcticmodal-container{height:100%}
-.arcticmodal-container_i{margin:0 auto;height:100%;}
-.arcticmodal-container_i2{padding:0;margin:0;border:0;vertical-align:middle}
-#hidden-box{display:none;}
-.valid.error-input{
-    background-color: #fee;
-    border: 1px solid #ffb8b8;
-    box-shadow: inset 0 3px 7px rgba(255, 43, 43, 0.14);
-    color: #f42121;
+.arcticmodal-container,
+.arcticmodal-overlay {
+    position : fixed;
+    left : 0;
+    top : 0;
+    right : 0;
+    bottom : 0;
+    z-index : 1000;
 }
-@-moz-keyframes spin { 100% { -moz-transform: rotate(360deg); } }
-@-webkit-keyframes spin { 100% { -webkit-transform: rotate(360deg); } }
-@keyframes spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }
-#errors{
-    background-color: #ffeded;
-    min-width: 390px;
-    position: relative;
-    border-radius: 5px;
-    box-shadow: 0 25px 54px rgba(255, 0, 0, 0.17);
-    padding:0px 30px 20px
+.arcticmodal-container {
+    overflow : auto;
+    margin : 0;
+    padding : 0;
+    border : 0;
+    border-collapse : collapse;
 }
-#errors>span{
-    color: #e69292;
-    font-family: 'Roboto Slab', serif;
-    font-size: 14px;
-    font-weight: 700;
-    display:block;
-    padding-top:7px;
-    margin-bottom:5px;
+:first-child + html .arcticmodal-container {
+    height : 100%;
+}
+.arcticmodal-container_i {
+    margin : 0 auto;
+    height : 100%;
+}
+.arcticmodal-container_i2 {
+    padding : 0;
+    margin : 0;
+    border : 0;
+    vertical-align : middle;
+}
+#hidden-box {
+    display : none;
+}
+.valid.error-input {
+    background-color : #fee;
+    border : 1px solid #ffb8b8;
+    box-shadow : inset 0 3px 7px rgba(255, 43, 43, 0.14);
+    color : #f42121;
+}
+@-moz-keyframes spin {
+    100% {
+        -moz-transform : rotate(360deg);
+    }
+}
+@-webkit-keyframes spin {
+    100% {
+        -webkit-transform : rotate(360deg);
+    }
+}
+@keyframes spin {
+    100% {
+        -webkit-transform : rotate(360deg);
+                transform : rotate(360deg);
+    }
+}
+#errors {
+    background-color : #ffeded;
+    min-width : 390px;
+    position : relative;
+    border-radius : 5px;
+    box-shadow : 0 25px 54px rgba(255, 0, 0, 0.17);
+    padding : 0 30px 20px;
+}
+#errors > span {
+    color : #e69292;
+    font-family : 'Roboto Slab', serif;
+    font-size : 14px;
+    font-weight : 700;
+    display : block;
+    padding-top : 7px;
+    margin-bottom : 5px;
+}
+#errors > .close {
+    position : absolute;
+    z-index : 2;
+    right : 2px;
+    top : 2px;
+    background-image : url(../img/i-close.png);
+    width : 30px;
+    height : 30px;
+    cursor : pointer;
+}
 
-}
-#errors>.close{
-    position:absolute;
-    z-index:2;
-    right:2px;
-    top:2px;
-    background-image:url(../img/i-close.png);
-    width:30px;
-    height:30px;
-    cursor:pointer;
-}
-#errors>p{
-}
-#errors>p>span{
-    display:block;
-    color: #242424;
-    line-height:20px;
-    margin-top:12px;
+#errors > p > span {
+    display : block;
+    color : #242424;
+    line-height : 20px;
+    margin-top : 12px;
 }

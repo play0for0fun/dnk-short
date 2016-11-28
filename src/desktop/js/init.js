@@ -1,7 +1,7 @@
 //webfont-load
 WebFont.load({
     google: {
-        families: ['PT+Sans+Caption:400:latin,cyrillic', 'Roboto+Slab:700:latin,cyrillic','Roboto:300:latin,cyrillic']
+        families: ['PT+Sans+Caption:400:latin,cyrillic', 'Roboto+Slab:700:latin,cyrillic', 'Roboto:300:latin,cyrillic']
     },
     active: function() {
         console.log('fonts-active');

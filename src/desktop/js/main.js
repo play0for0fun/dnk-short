@@ -120,7 +120,7 @@ function get_input_parameters(type_data) {
 
         case 'offer_h1':
 
-            input_obj.name_input = '"Основа"';
+            input_obj.name_input = '"Оффер основа"';
             input_obj.min_length = textarea_min_length;
             input_obj.max_length = offer_h1_max_length;
             input_obj.type_of_input = 'textarea';
@@ -129,7 +129,7 @@ function get_input_parameters(type_data) {
 
         case 'offer_h2':
 
-            input_obj.name_input = '"Преимущество"';
+            input_obj.name_input = '"Оффер преимущество"';
             input_obj.min_length = textarea_min_length;
             input_obj.max_length = offer_h2_max_length;
             input_obj.type_of_input = 'textarea';
@@ -192,7 +192,7 @@ function get_input_parameters(type_data) {
 
         case 'page_addr':
 
-            input_obj.name_input = '"Адрес"';
+            input_obj.name_input = '"Адрес на странице"';
             input_obj.min_length = textarea_min_length;
             input_obj.max_length = addr_max_length;
             input_obj.type_of_input = 'textarea';
@@ -237,7 +237,7 @@ function get_input_parameters(type_data) {
 
         case 'form_head':
 
-            input_obj.name_input = '"Причина"';
+            input_obj.name_input = '"Надпись на форме"';
             input_obj.min_length = form_head_min_length;
             input_obj.max_length = form_head_max_length;
             input_obj.type_of_input = 'textarea';
@@ -246,7 +246,7 @@ function get_input_parameters(type_data) {
 
         case 'form_button':
 
-            input_obj.name_input = '"Надпись на копке"';
+            input_obj.name_input = '"Надпись на кнопке"';
             input_obj.min_length = form_button_min_length;
             input_obj.max_length = form_button_max_length;
             input_obj.type_of_input = 'textarea';
@@ -255,7 +255,7 @@ function get_input_parameters(type_data) {
 
         case 'bg_img_d':
 
-            input_obj.name_input = '"Фон"';
+            input_obj.name_input = '"Фон страницы"';
             input_obj.min_length = 0;
             input_obj.max_length = 0;
             input_obj.type_of_input = 'img';
@@ -264,7 +264,7 @@ function get_input_parameters(type_data) {
 
         case 'bg_video':
 
-            input_obj.name_input = '"Фонове видео"';
+            input_obj.name_input = '"Видео на фон"';
             input_obj.min_length = bg_video_min_length;
             input_obj.max_length = video_max_length;
             input_obj.type_of_input = 'video';
@@ -511,7 +511,7 @@ function validate_input(elem) {
             console.log(type_data + ' - good');
         }
 
-    }else
+    } else
 
     if (input_obj.type_of_input == 'input_count') {
 
@@ -525,7 +525,7 @@ function validate_input(elem) {
             console.log(type_data + ' - good');
         }
 
-    }else 
+    } else
 
     if (input_obj.type_of_input == 'domain') {
 
@@ -536,18 +536,18 @@ function validate_input(elem) {
             $(elem).addClass('error-input').addClass('error-over');
             console.log(type_data + ' - error - over');
 
-        // } else
-        //  if (inp_value.length > 0 && !patt.test(inp_value)) {
+            // } else
+            //  if (inp_value.length > 0 && !patt.test(inp_value)) {
 
-        //     $(elem).addClass('error-input').addClass('error-nodomain');
-        //     console.log(type_data + ' - error - nodomain');
+            //     $(elem).addClass('error-input').addClass('error-nodomain');
+            //     console.log(type_data + ' - error - nodomain');
 
         } else {
             $(elem).removeClass('error-input').removeClass('error-empty').removeClass('error-over').removeClass('error-noemail');
             console.log(type_data + ' - good');
         }
 
-    } 
+    }
 
 }
 
@@ -706,7 +706,7 @@ function validate_wrap(wrap, if_good) {
                     error_text = '<span>Максимальное количество полей для формы - 3</span>';
                     errors_wrap.append(error_text);
                 }
-            }else
+            } else
 
             if (input_obj.type_of_input == 'domain') {
 
@@ -756,7 +756,7 @@ function validateEmail(email) {
 
 function setCookie(cname, cvalue, exdays) {
     var d = new Date();
-    d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000)+ 30 * 60 * 1000);
+    d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000) + 300 * 60 * 1000);
     var expires = "expires=" + d.toUTCString();
     document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
 }
@@ -955,7 +955,7 @@ function validate_user(email, hash) {
         //console.log('refresh coockie - ', hash, email);
         setCookie('dnk_user', hash, 0);
         //setCookie('dnkatom_email', email, 1);
-        get_user_list(data.response.userKey,true);
+        get_user_list(data.response.userKey, true);
 
     }, false, function() {
         history.pushState('', document.title, './');
@@ -1007,7 +1007,7 @@ function login(wrap, callback_false) {
 
 var user_pages;
 
-function get_user_list(hash,creation) {
+function get_user_list(hash, creation) {
 
 
     var data_hash = {
@@ -1033,29 +1033,29 @@ function get_user_list(hash,creation) {
             user_pages = data.response;
 
             //paste_values(user_pages[parseInt($(this).attr('data-edit'))]);
-                
-            if(!creation){
+
+            if (!creation) {
 
                 $('#user-list .list').html('');
 
                 for (var i = data.response.length - 1; i >= 0; i--) {
 
                     var name = '<span>' + data.response[i].name + '</span>';
-                    
+
                     var server_url = '';
                     var domiain_url = '';
 
-                    if(data.response[i].content && data.response[i].content.bg_video.length){
+                    if (data.response[i].content && data.response[i].content.bg_video.length) {
                         server_url = '<a href="' + data.response[i].url + '" class="link" target="_blank">на сервере</a>';
-                        if(data.response[i].domain.length > 0){
+                        if (data.response[i].domain.length > 0) {
                             domiain_url = '<a href="http://' + data.response[i].domain + '" class="link" target="_blank">на домене</a>';
                         }
                     }
 
-                    var carcas = '<p><span>'+name+domiain_url+server_url+'</span><a href="#" data-edit="' + i + '" class="button page_edit">Редактировать</a></p>'
+                    var carcas = '<p><span>' + name + domiain_url + server_url + '</span><a href="#" data-edit="' + i + '" class="button page_edit">Редактировать</a></p>'
 
                     $(carcas).appendTo('#user-list .list');
-                
+
 
 
                 }
@@ -1076,16 +1076,16 @@ function get_user_list(hash,creation) {
                 $('#user-wrap').show();
                 $('#user-list').show();
 
-            }else{
-                console.log('USER_PAGES = ',user_pages);
-                console.log('USER_PAGES.length = ',user_pages.length);
-                paste_values(user_pages[user_pages.length-1]);
+            } else {
+                console.log('USER_PAGES = ', user_pages);
+                console.log('USER_PAGES.length = ', user_pages.length);
+                paste_values(user_pages[user_pages.length - 1]);
                 $('#user-wrap').hide();
                 $('#body').show();
             }
             //console.log(data);
 
-            
+
             //paste_values(data.response[0].content);
             //$('.sec11 .site').append('<iframe src="' + data.response[0].url + '"></iframe>');
 
@@ -1118,7 +1118,7 @@ function paste_values(data) {
 
         $('input[name="domain"]').val(data.domain);
     }
-    
+
     var content = data.content;
     console.log(content);
     for (var key in content) {
@@ -1134,12 +1134,12 @@ function paste_values(data) {
 
                 content[key] = content[key].replace(content[key], 'https://www.youtube.com/watch?v=' + content[key]);
 
-                if (!$('.trig[data-target="'+key+'"]').hasClass('active')) {
-                    $('.trig[data-target="'+key+'"]').trigger('click');   
+                if (!$('.trig[data-target="' + key + '"]').hasClass('active')) {
+                    $('.trig[data-target="' + key + '"]').trigger('click');
                 }
-            }else{
-                if ($('.trig[data-target="'+key+'"]').hasClass('active')) {
-                    $('.trig[data-target="'+key+'"]').trigger('click');   
+            } else {
+                if ($('.trig[data-target="' + key + '"]').hasClass('active')) {
+                    $('.trig[data-target="' + key + '"]').trigger('click');
                 }
             }
         }
@@ -1147,25 +1147,25 @@ function paste_values(data) {
 
 
         if (key == 'logo_img') {
-            if(content[key] != '0'){
+            if (content[key] != '0') {
                 if (!$('.trig[data-target="logo_img"]').hasClass('active')) {
-                    $('.trig[data-target="logo_img"]').trigger('click');   
+                    $('.trig[data-target="logo_img"]').trigger('click');
                 }
-            }else{
+            } else {
                 if ($('.trig[data-target="logo_img"]').hasClass('active')) {
-                    $('.trig[data-target="logo_img"]').trigger('click');   
+                    $('.trig[data-target="logo_img"]').trigger('click');
                 }
             }
         }
 
 
         if (key == 'form_custom') {
-            if(content[key] != '0') {
+            if (content[key] != '0') {
                 if (!$('.radio[data-input="custom"]').hasClass('active')) {
                     $('.radio[data-input="custom"]>span').trigger('click');
                 }
 
-            }else{
+            } else {
                 if ($('.radio[data-input="custom"]').hasClass('active')) {
                     $('.radio[data-input="custom"]>span').trigger('click');
                 }
@@ -1173,11 +1173,11 @@ function paste_values(data) {
         }
 
         if (key == 'form_email') {
-            if(content[key] != '0') {
+            if (content[key] != '0') {
                 if (!$('.radio[data-input="email"]').hasClass('active')) {
                     $('.radio[data-input="email"]>span').trigger('click');
                 }
-            }else{
+            } else {
                 if ($('.radio[data-input="email"]').hasClass('active')) {
                     $('.radio[data-input="email"]>span').trigger('click');
                 }
@@ -1192,7 +1192,7 @@ function paste_values(data) {
         $('#form_custom_plac').val(content['form_custom_plac']);
     }
 
-    
+
     //$('.iph1,.iph2,.iph3').trigger('change');
 
     console.log('values_pasted - ', content);
@@ -1256,8 +1256,8 @@ function upload_img(elem, type, callback) {
                     //var file = {
                     // data:data
                     //}
-                    console.log('FormData:,', data);
-                    console.log('FormData->File:,', data.get('file'));
+                    //console.log('FormData:,', data);
+                    //console.log('FormData->File:,', data.get('file'));
                     get_json('post', upload_url, data, callback, true, callback);
 
 
@@ -1312,8 +1312,8 @@ function send_full_data(callback) {
     var form_email = $('#form_email').val();
     var form_custom = $('#form_custom').val();
 
-    var bg_shadow =  $('#bg_shadow').val();
-    var template =  $('#template').val();
+    var bg_shadow = $('#bg_shadow').val();
+    var template = $('#template').val();
 
     var userKey = $('#userKey').val();
     var pageId = $('#pageId').val();
@@ -1322,7 +1322,7 @@ function send_full_data(callback) {
     if (page_email.length == 0) {
         page_email = act_email
     }
-    
+
     if (bg_video != '0') {
         bg_video = youtube_parser(bg_video);
     }
@@ -1331,7 +1331,7 @@ function send_full_data(callback) {
         content_video = youtube_parser(content_video);
     }
 
-    console.log('DOMAIN = ',domain);
+    console.log('DOMAIN = ', domain);
 
     var show_cname = false;
     if (domain != '') {
@@ -1376,7 +1376,7 @@ function send_full_data(callback) {
     var url = 'https://atom.dnk.bz/api/v1/page/save?userKey=' + userKey;
 
 
-    get_json('post', url, data, function(){
+    get_json('post', url, data, function() {
         get_user_list($('#userKey').val());
 
         if (show_cname == true) {
@@ -1396,11 +1396,11 @@ function show_alert_mess(text) {
     $('#errors').arcticmodal();
 }
 
-function create_page(){
+function create_page() {
     clean_values();
     var userKey = $('#userKey').val();
 
-    data= {
+    data = {
         name: 'Moй новый сайт'
     }
 
@@ -1408,14 +1408,14 @@ function create_page(){
     var url = 'https://atom.dnk.bz/api/v1/page/save?userKey=' + userKey;
 
 
-    get_json('post', url, data, function(){
-        get_user_list($('#userKey').val(),true);
+    get_json('post', url, data, function() {
+        get_user_list($('#userKey').val(), true);
     });
 
 
 }
 
-function clean_values(){
+function clean_values() {
     $('#template').val('wov').trigger('input');
     $('#bg_shadow').val('0.8').trigger('input');
     $('#input_count').val('2').trigger('input');
@@ -1508,7 +1508,7 @@ $(document).ready(function() {
 
     });
 
-    $('#logo_img').on('input',function(){
+    $('#logo_img').on('input', function() {
 
         var d = new Date();
         if ($(this).val() != '0') {
@@ -1535,13 +1535,13 @@ $(document).ready(function() {
 
     });
 
-    $('#bg_img_d').on('input',function(){
+    $('#bg_img_d').on('input', function() {
 
         var d = new Date();
         if ($(this).val() != '0') {
             $('#preview').css('background-image', 'url(' + $(this).val() + '?' + d.getTime() + ')');
         }
-        
+
     });
 
     $('.trig').click(function(e) {
@@ -1549,9 +1549,9 @@ $(document).ready(function() {
         if (!$(this).hasClass('active')) {
             $(this).addClass('active');
             if (target == 'logo') {
-                $('#preview').attr('data-logo','1');
+                $('#preview').attr('data-logo', '1');
                 $('#logo_img').val('').trigger('input');
-            }else
+            } else
             if (target == 'bg_video') {
                 $('#bg_video').val('');
             }
@@ -1562,9 +1562,9 @@ $(document).ready(function() {
         } else {
             $(this).removeClass('active');
             if (target == 'logo') {
-                $('#preview').attr('data-logo','0');
+                $('#preview').attr('data-logo', '0');
                 $('#logo_img').val('0').trigger('input');
-            }else
+            } else
             if (target == 'bg_video') {
                 $('#bg_video').val('0');
             }
@@ -1575,7 +1575,7 @@ $(document).ready(function() {
         }
     });
 
-    $('textarea[name="descriptor"]').on('input',function() {
+    $('textarea[name="descriptor"]').on('input', function() {
 
         var enter_char = new RegExp(String.fromCharCode(10), 'g');
 
@@ -1585,32 +1585,32 @@ $(document).ready(function() {
 
     });
 
-    $( "#slider" ).slider({
-      slide: function( event, ui ) {
-        console.log(ui);
-        $('#bg_shadow').val(ui.value/100).trigger('input');
-      }
+    $("#slider").slider({
+        slide: function(event, ui) {
+            console.log(ui);
+            $('#bg_shadow').val(ui.value / 100).trigger('input');
+        }
     });
 
-    $('input[name="bg_shadow"]').on('input',function(){
+    $('input[name="bg_shadow"]').on('input', function() {
 
-        $('#preview .bg-shadow').css('opacity',$(this).val());
+        $('#preview .bg-shadow').css('opacity', $(this).val());
 
-        $( "#slider" ).slider( "value", parseFloat($(this).val())*100);
+        $("#slider").slider("value", parseFloat($(this).val()) * 100);
 
     });
 
-    $('.radio>span').click(function(){
+    $('.radio>span').click(function() {
         var wrap = $(this).parent();
         if (!wrap.hasClass('frozen')) {
             if (!wrap.hasClass('active')) {
                 wrap.addClass('active');
                 if (wrap.attr('data-input') == 'email') {
                     $('#form_email').val('1');
-                }else
+                } else
                 if (wrap.attr('data-input') == 'custom') {
                     $('#form_custom').val('1');
-                   
+
                     var inp = wrap.find('input');
                     inp.each(function(index, el) {
                         var inp_val = $(this).val();
@@ -1622,14 +1622,14 @@ $(document).ready(function() {
 
                     });
                 }
-            }else{
+            } else {
                 wrap.removeClass('active');
                 if (wrap.attr('data-input') == 'email') {
                     $('#form_email').val('0');
-                }else
+                } else
                 if (wrap.attr('data-input') == 'custom') {
                     $('#form_custom').val('0');
-                   
+
                     var inp = wrap.find('input');
                     inp.each(function(index, el) {
                         var inp_val = $(this).val();
@@ -1652,9 +1652,9 @@ $(document).ready(function() {
     $('.button.button_go').click(function(e) {
         e.preventDefault();
 
-        validate_wrap($('#body,#hidden-box'),function(){
+        validate_wrap($('#body,#hidden-box'), function() {
 
-            send_full_data(function(){
+            send_full_data(function() {
 
             });
 
@@ -1684,7 +1684,7 @@ $(document).ready(function() {
     //     //alert(new_match);
     // });
 
-    $('#show_cname .button').click(function(e){
+    $('#show_cname .button').click(function(e) {
         e.preventDefault();
         $('#show_cname').hide();
     });
