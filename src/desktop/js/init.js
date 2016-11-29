@@ -5,7 +5,7 @@ WebFont.load({
     },
     active: function() {
         console.log('fonts-active');
-        initalize();
+        initalize_async();
     }
 });
 console.log('fonts-start');
@@ -17,7 +17,7 @@ console.log('isMobile = ' + isMobile);
 
 
 //initalize
-function initalize() {
+function initalize_async() {
 
 
     console.log('inited');

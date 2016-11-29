@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="ru">
     <head>
-        <!-- <script src="https://localhost:4445/livereload.js"></script> -->
+        <script src="https://localhost:4445/livereload.js"></script>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=980">
         <title>ДНК</title>
@@ -67,7 +67,7 @@
                         <p class="label">Предпросмотр</p>
                         <div class="view" id="preview" data-logo="0">
                             <div class="logo" id="logo_view"></div>
-                            <p class="descr"></p>
+                            <p class="descr"><span></span></p>
                             <div class="bg-shadow"></div>
                         </div>
                         <p class="label slider_label">Затемнение фона</p>
@@ -159,13 +159,16 @@
                     <div class="row-5">
                         <a class="button button_go" href="#">Сохранить</a>
                     </div>
+                    <div class="row-5">
+                        <a class="button button_back" href="#">Назад к списку</a>
+                    </div>
                 </div>
             </div>
         </section>
         <div id="user-wrap">
             <form class="login" id="login" action="#" method="post">
                 <p class="b">Войти</p>
-                <input class="valid" name="login" data-input-type="login" type="text" value placeholder="Логин">
+                <input class="valid" name="login" data-input-type="login" type="text" value placeholder="логин@компания">
                 <input class="valid" name="pass" data-input-type="pass" type="password" value placeholder="Пароль">
                 <button class="button send_login" type="submit">Войти</button>
             </form>
@@ -188,8 +191,18 @@
                 <a class="button create_new" href="#">Создать новый</a>
             </div>
         </div>
-        <div id="loading">
+        <div id="loading_wrap">
+            
+        </div>
+        <div id="critical">
+            <span>Что-то пошло не так(<br>Пожалуйста, обновите страницу</span>
             <div></div>
+            <p></p>
+        </div>
+        <div id="preload">
+            <div>
+                
+            </div>
         </div>
         <div id="show_cname">
             <div>
@@ -197,6 +210,9 @@
                 <div class="button">ОК</div>
             </div>
         </div>
+        <a id="support" href="http://wiki.dnk.bz/ticket/" class="button" target="_blank">
+        Тех. поддержка</a>
+        <a id="logout" href="#"></a>
         <div id="hidden-box">
             <div id="errors">
                 <div class="close"></div>
@@ -205,9 +221,6 @@
             </div>
             <form action="#" enctype="multipart/form-data">
                 <input id="upfile1" name="file" type="file">
-            </form>
-            <form action="#" enctype="multipart/form-data">
-                <input id="upfile2" name="file" type="file">
             </form>
             <input class="valid" id="logo_img" name="logo_img" data-input-type="logo_img" type="hidden" value="0">
             <input class="valid" id="bg_img_d" name="bg_img_d" data-input-type="bg_img_d" type="hidden" value>
@@ -219,6 +232,9 @@
             <input id="template" name="template" type="hidden" value="wov">
             <input id="userKey" name="userKey" type="hidden" value>
             <input id="pageId" name="pageId" type="hidden" value>
+            <form action="#" enctype="multipart/form-data">
+                <input id="upfile2" name="file" type="file">
+            </form>
         </div>
         <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.16/webfont.js"></script>
         <script src="js/init.js"></script>
