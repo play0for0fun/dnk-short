@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="ru">
     <head>
-        <script src="https://localhost:4445/livereload.js"></script>
+        <!-- <script src="https://localhost:4445/livereload.js"></script> -->
         <meta charset="UTF-8">
         <meta name="viewport" content="width=980">
         <title>ДНК</title>
@@ -67,7 +67,9 @@
                         <p class="label">Предпросмотр</p>
                         <div class="view" id="preview" data-logo="0">
                             <div class="logo" id="logo_view"></div>
-                            <p class="descr"><span></span></p>
+                            <p class="descr">
+                                <span></span>
+                            </p>
                             <div class="bg-shadow"></div>
                         </div>
                         <p class="label slider_label">Затемнение фона</p>
@@ -192,7 +194,6 @@
             </div>
         </div>
         <div id="loading_wrap">
-            
         </div>
         <div id="critical">
             <span>Что-то пошло не так(<br>Пожалуйста, обновите страницу</span>
@@ -201,7 +202,6 @@
         </div>
         <div id="preload">
             <div>
-                
             </div>
         </div>
         <div id="show_cname">
@@ -210,8 +210,8 @@
                 <div class="button">ОК</div>
             </div>
         </div>
-        <a id="support" href="http://wiki.dnk.bz/ticket/" class="button" target="_blank">
-        Тех. поддержка</a>
+        <a class="button" id="support" href="http://wiki.dnk.bz/ticket/" target="_blank">
+            Тех. поддержка</a>
         <a id="logout" href="#"></a>
         <div id="hidden-box">
             <div id="errors">

@@ -999,7 +999,7 @@ function get_json(type, url, data, funct, disable_cahe, status_ER, background) {
             }
 
             $('#loading_wrap').children('.loading').remove();
-            $('#critical>p').html('errorId: '+requestId+'<br>'+$.parseJSON(xhr.responseText).errorMsg);
+            $('#critical>p').html('errorId: ' + requestId + '<br>' + $.parseJSON(xhr.responseText).errorMsg);
             $('#critical').show();
             //console.log('-------------------------------');
         }
@@ -1163,8 +1163,12 @@ function get_user_list(hash, creation) {
 
                     if (validate_template_content(data.response[i])) {
                         server_url = '<a href="' + data.response[i].url + '" class="link" target="_blank">на сервере</a>';
-                        if (data.response[i].domain.length > 0) {
-                            domiain_url = '<a href="http://' + data.response[i].domain + '" class="link" target="_blank">на домене</a>';
+                        if (typeof data.response[i].domain != 'undefined' && data.response[i].domain != '' && data.response[i].domain != 'null' && data.response[i].domain != null) {
+                            if (data.response[i].domain.length > 0) {
+
+                                domiain_url = '<a href="http://' + data.response[i].domain + '" class="link" target="_blank">на домене</a>';
+
+                            }
                         }
                     }
 
@@ -1187,8 +1191,8 @@ function get_user_list(hash, creation) {
                     $('#user-list').arcticmodal('close');
                     $('#body').attr('data-page-number', page_number).show();
                     console.log('          page_edit click() - setCoockie page_number');
-                    
-                    setCookie('dnk_page_index',page_number,-10);
+
+                    setCookie('dnk_page_index', page_number, -10);
                 });
 
 
@@ -1203,8 +1207,8 @@ function get_user_list(hash, creation) {
                 //$('#user-wrap').show();
                 //$('#user-list').show();
                 var cookie_dnk_page_index = getCookie('dnk_page_index');
-                if (cookie_dnk_page_index.length>0&&cookie_dnk_page_index != '-1') {
-                    $('.button.page_edit[data-edit="'+cookie_dnk_page_index+'"]').trigger('click');
+                if (cookie_dnk_page_index.length > 0 && cookie_dnk_page_index != '-1') {
+                    $('.button.page_edit[data-edit="' + cookie_dnk_page_index + '"]').trigger('click');
                 }
 
             } else {
@@ -1221,9 +1225,9 @@ function get_user_list(hash, creation) {
 
                 }
                 //$('#user-wrap').hide();
-                $('#body').attr('data-page-number',page_number).show();
+                $('#body').attr('data-page-number', page_number).show();
                 console.log('          page_edit click() - setCoockie page_number');
-                setCookie('dnk_page_index',page_number,-10);
+                setCookie('dnk_page_index', page_number, -10);
             }
             //console.log(data);
 
@@ -1405,7 +1409,7 @@ function upload_img(elem, type, callback) {
                     var upload_url = 'https://atom.dnk.bz/api/v1/page/' + pageId + '/image/upload?userKey=' + userKey + '&type=' + target;
 
                     console.log('          upload_img() - отправка фотографии');
-                    
+
                     //console.log('FILE = ',file);
                     //data.append('file', file);
                     //data = file;
@@ -1727,18 +1731,25 @@ function validate_template_content(data) {
             //console.log(data.content)
             if (typeof data.content != 'undefined' && data.content != 'null' && data.content != null) {
 
-                if (typeof eval(data_eval) != 'undefined' && eval(data_eval) != 'null' && eval(data_eval) != null && data_eval != 'domain') {
+                if (data_eval != 'data.domain') {
 
-                    var data_value = eval(data_eval);
-
-                    console.log('           validate_template_content() - key = ', key_name, ' ; inp_in_data = ', data_value);
+                    if (typeof eval(data_eval) != 'undefined' && eval(data_eval) != 'null' && eval(data_eval) != null || data_eval == 'domain') {
 
 
-                } else {
+                        var data_value = eval(data_eval);
 
-                    console.log('           validate_template_content() - key = ', key_name, ' ; inp_in_data = ', data_value);
-                    console.log('           validate_template_content() - RETURN FALSE - ', key_name);
-                    return false;
+                        console.log('           validate_template_content() - key = ', key_name, ' ; inp_in_data = ', data_value);
+
+
+
+
+                    } else {
+
+                        console.log('           validate_template_content() - key = ', key_name, ' ; inp_in_data = ', data_value);
+                        console.log('           validate_template_content() - RETURN FALSE - ', key_name);
+                        return false;
+
+                    }
 
                 }
 
@@ -2114,7 +2125,7 @@ $(document).ready(function() {
             send_full_data(function() {
 
                 console.log('        save() clearCoockie dnk_page_index ')
-                setCookie('dnk_page_index','-1',-60);
+                setCookie('dnk_page_index', '-1', -60);
             });
 
         });
@@ -2154,14 +2165,14 @@ $(document).ready(function() {
 
     $('#logout').click(function(e) {
         e.preventDefault();
-        setCookie('dnk_page_index','-1',-60);
-        setCookie('dnk_user','-1',-60);
+        setCookie('dnk_page_index', '-1', -60);
+        setCookie('dnk_user', '-1', -60);
         location.reload();
     });
 
     $('a.btn_back').click(function(e) {
         e.preventDefault();
-        setCookie('dnk_page_index','-1',-60);
+        setCookie('dnk_page_index', '-1', -60);
         get_user_list($('#userKey').val());
     });
 });
