@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="ru">
     <head>
-        <script src="https://localhost:4445/livereload.js"></script>
+        <!-- <script src="https://localhost:4445/livereload.js"></script> -->
         <meta charset="UTF-8">
         <meta name="viewport" content="width=980">
         <title>ДНК</title>
