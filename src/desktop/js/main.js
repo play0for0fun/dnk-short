@@ -860,7 +860,7 @@ function get_json(type, url, data, funct, disable_cahe, status_ER, background) {
             }
             str += key + "=" + data[key];
         }
-        send_data = str;
+        data = str;
 
     }
 
@@ -875,20 +875,21 @@ function get_json(type, url, data, funct, disable_cahe, status_ER, background) {
         var test = false;
 
         if (type == 'post') {
-            send_data = JSON.stringify(data);
+            data = JSON.stringify(data);
         }
 
     }
 
     if (!background) {
 
-        var d = new Date();
-        var time = d.getTime();
+        var loading_data = new Date();
+        var time = loading_data.getTime();
 
         $loading.appendTo('#loading_wrap').attr('data-time', time);
 
     }
 
+    var send_data = data;
 
     $.ajax({
         type: type,
@@ -1356,6 +1357,9 @@ function paste_values(data) {
 function upload_img(elem, type, callback) {
 
     var data = new FormData($(elem).closest('form')[0]);
+    // var data = new FormData();
+    // var file = elem.files[0];
+    // console.log('FILE = ',file);
     //var data = new FormData();
 
     if ($(elem).val() != '') {
@@ -1400,18 +1404,20 @@ function upload_img(elem, type, callback) {
 
                     var upload_url = 'https://atom.dnk.bz/api/v1/page/' + pageId + '/image/upload?userKey=' + userKey + '&type=' + target;
 
-                    console.log('отправка фотографии');
-                    //data.append('img', file);
+                    console.log('          upload_img() - отправка фотографии');
+                    
+                    //console.log('FILE = ',file);
+                    //data.append('file', file);
                     //data = file;
 
                     //var FR= new FileReader();
                     //FR.onload = function(e) {
                     //   data = e.target.result;//.replace(/^data:image\/(png|jpg);base64,/, "");
-                    //var file = {
-                    // data:data
+                    //var data = {
+                    // file:file
                     //}
-                    //console.log('FormData:,', data);
-                    //console.log('FormData->File:,', data.get('file'));
+                    console.log('          FormData:,', data);
+                    console.log('          FormData->File:,', data.get('file'));
                     get_json('post', upload_url, data, callback, true, callback);
 
 
